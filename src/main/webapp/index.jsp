@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="com.weixin.pojo.SNSUserInfo,java.lang.*"%>
+<!DOCTYPE html >
 <html>
 <head>
     <title>OAuth2.0网页授权</title>
