@@ -13,6 +13,7 @@ import org.dom4j.io.SAXReader;
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
 import java.io.Writer;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -184,6 +185,67 @@ public class MessageUtil {
         xstream.alias("xml", newsMessage.getClass());
         xstream.alias("item", new Article().getClass());
         return xstream.toXML(newsMessage);
+    }
+
+    public static ImageMessage getImageMessage(String mediaId,String fromUserName,String toUserName){
+        ImageMessage imageMessage = new ImageMessage();
+        imageMessage.setToUserName(fromUserName);
+        imageMessage.setFromUserName(toUserName);
+        imageMessage.setCreateTime(new Date().getTime());
+        imageMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_IMAGE);
+        imageMessage.setImage(new Image(mediaId));
+        return imageMessage;
+    }
+
+    public static TextMessage getTextMessage(String fromUserName,String toUserName,String respContent){
+        // 回复文本消息
+        TextMessage textMessage = new TextMessage();
+        textMessage.setToUserName(fromUserName);
+        textMessage.setFromUserName(toUserName);
+        textMessage.setCreateTime(new Date().getTime());
+        textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+        textMessage.setContent(respContent);
+        return textMessage;
+    }
+
+    public static VideoMessage getVideoMessage(String fromUserName,String toUserName,String mediaId,String thumb_mediaId){
+        VideoMessage videoMessage = new VideoMessage();
+        videoMessage.setToUserName(fromUserName);
+        videoMessage.setFromUserName(toUserName);
+        videoMessage.setCreateTime(new Date().getTime());
+        videoMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_VIDEO);
+        videoMessage.setVideo(new Video(mediaId,thumb_mediaId));
+        return videoMessage;
+    }
+
+    public static NewsMessage getNewsMessage(String fromUserName,String toUserName,List<Article> list){
+        NewsMessage newsMessage = new NewsMessage();
+        newsMessage.setToUserName(fromUserName);
+        newsMessage.setFromUserName(toUserName);
+        newsMessage.setCreateTime(new Date().getTime());
+        newsMessage.setMsgType(RESP_MESSAGE_TYPE_NEWS);
+        newsMessage.setArticleCount(list.size());
+        newsMessage.setArticles(list);
+        return newsMessage;
+    }
+
+    public static Article getArticle(String title,String description,String picUrl,String url){
+        Article article = new Article();
+        article.setTitle(title);
+        article.setDescription(description);
+        article.setPicUrl(picUrl);
+        article.setUrl(url);
+        return article;
+    }
+
+    public static MusicMessage getMusicMessage(String fromUserName,String toUserName,Music music){
+        MusicMessage musicMessage = new MusicMessage();
+        musicMessage.setToUserName(fromUserName);
+        musicMessage.setFromUserName(toUserName);
+        musicMessage.setCreateTime(new Date().getTime());
+        musicMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_MUSIC);
+        musicMessage.setMusic(music);
+        return musicMessage;
     }
 
 }

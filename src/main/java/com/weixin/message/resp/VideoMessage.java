@@ -6,6 +6,7 @@ package com.weixin.message.resp;
  * 发布版本：V1.0  </br>
  */
 public class VideoMessage extends BaseMessage {
+
     // 视频
     private Video Video;
 

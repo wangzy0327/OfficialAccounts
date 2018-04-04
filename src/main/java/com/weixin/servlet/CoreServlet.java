@@ -1,6 +1,7 @@
 package com.weixin.servlet;
 
 import com.weixin.service.CoreService;
+import com.weixin.service.MenuService;
 import com.weixin.util.SignUtil;
 
 import javax.servlet.ServletException;
@@ -59,8 +60,10 @@ public class CoreServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
+        String respXml = null;
+
         // 调用核心业务类接收消息、处理消息
-        String respXml = CoreService.processRequest(request);
+        respXml = CoreService.processRequest(request);
 
         // 响应消息
         PrintWriter out = response.getWriter();

@@ -1,5 +1,6 @@
 package com.weixin.util;
 
+import com.weixin.menu.Menu;
 import com.weixin.pojo.Token;
 import com.weixin.pojo.WeixinUserInfo;
 import net.sf.json.JSONObject;
@@ -17,11 +18,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.weixin.util.WeixinUtil.httpRequest;
+
 public class CommonUtil {
     private static Logger log = LoggerFactory.getLogger(CommonUtil.class);
 
     // 凭证获取（GET）
     public final static String token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+
+    // 菜单创建（POST） 限100（次/天）
+    public final static String menu_create_url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 
     /**
      * 发送https请求
@@ -84,6 +90,30 @@ public class CommonUtil {
         return jsonObject;
     }
 
+    /**
+     * 创建菜单
+     *
+     * @param menu 菜单实例
+     * @param accessToken 有效的access_token
+     * @return 0表示成功，其他值表示失败
+     */
+    public static int createMenu(Menu menu, String accessToken) {
+        int result = 0;
+        // 拼装创建菜单的url
+        String url = menu_create_url.replace("ACCESS_TOKEN", accessToken);
+        // 将菜单对象转换成json字符串
+        String jsonMenu = JSONObject.fromObject(menu).toString();
+        // 调用接口创建菜单
+        JSONObject jsonObject = httpRequest(url, "POST", jsonMenu);
+        if (null != jsonObject) {
+            if (0 != jsonObject.getInt("errcode")) {
+                result = jsonObject.getInt("errcode");
+                log.error("创建菜单失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+            }
+        }
+
+        return result;
+    }
     /**
      * 获取接口访问凭证
      *

@@ -1,6 +1,6 @@
 $(function () {
     var url = location.href.split('#').toString();//url不能写死
-    alert(url);
+    // alert(url);
     console.log(url);
     $.ajax({
         type: "POST",
@@ -10,8 +10,9 @@ $(function () {
         data: JSON.stringify({"url": url}),
         success: function (data) {
             console.log(data.appId);
+            // 微信信息的以及调用的配置
             wx.config({
-                debug: true,////生产环境需要关闭debug模式
+                debug:false,//生产环境需要关闭debug模式
                 appId: data.appId,//appId通过微信服务号后台查看
                 timestamp: data.timestamp,//生成签名的时间戳
                 nonceStr: data.nonceStr,//生成签名的随机字符串
@@ -50,10 +51,10 @@ $(function () {
 
         //获取“分享到QQ”按钮点击状态及自定义分享内容接口
         wx.onMenuShareQQ({
-            title: '大辣椒', // 分享标题
-            desc: '大辣椒--加一元再来一桶', // 分享描述
-            link: 'http://wangzy.tunnel.qydev.com/neUzquH.html', // 分享链接
-            imgUrl: 'http://wangzy.tunnel.qydev.com/img/neUzquH.jpg', // 分享图标
+            title: '慧锐通电子书架', // 分享标题
+            desc: '慧锐通产品介绍的电子画册，含数字对讲、模拟对讲、云对讲、智能互联、蓝牙门禁等系统！', // 分享描述
+            link: 'http://www.wrtrd.net/book/', // 分享链接
+            imgUrl: 'http://www.wrtrd.net/book/images/wxbook.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
             },
@@ -78,10 +79,10 @@ $(function () {
 
         //获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
         wx.onMenuShareQZone({
-            title: '大辣椒', // 分享标题
-            desc: '大辣椒--加一元再来一桶', // 分享描述
-            link: 'http://wangzy.tunnel.qydev.com/neUzquH.html', // 分享链接
-            imgUrl: 'http://wangzy.tunnel.qydev.com/img/neUzquH.jpg', // 分享图标
+            title: '慧锐通电子书架', // 分享标题
+            desc: '慧锐通产品介绍的电子画册，含数字对讲、模拟对讲、云对讲、智能互联、蓝牙门禁等系统！', // 分享描述
+            link: 'http://www.wrtrd.net/book/', // 分享链接
+            imgUrl: 'http://www.wrtrd.net/book/images/wxbook.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
             },
@@ -90,15 +91,4 @@ $(function () {
             }
         });
     });
-
 });
-//    // 微信信息的以及调用的配置
-//    wx.config({
-//        debug: true,
-//        appId: '${appId}',
-//        timestamp: '${timestamp}',
-//        nonceStr: '${nonceStr}',
-//        signature: '${signature}',
-//        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone']
-//    });
-// 微信信息的以及调用的配置

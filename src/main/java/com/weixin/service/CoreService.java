@@ -27,6 +27,10 @@ public class CoreService {
         try {
             // 调用parseXml方法解析请求消息
             Map<String, String> requestMap = MessageUtil.parseXml(request);
+            if(requestMap.get("EventKey")!=null){
+                respXml = MenuService.processRequest(requestMap);
+                return respXml;
+            }
             // 发送方帐号
             String fromUserName = requestMap.get("FromUserName");
             // 开发者微信号
@@ -34,12 +38,12 @@ public class CoreService {
             // 消息类型
             String msgType = requestMap.get("MsgType");
 
-            // 回复文本消息
-            TextMessage textMessage = new TextMessage();
-            textMessage.setToUserName(fromUserName);
-            textMessage.setFromUserName(toUserName);
-            textMessage.setCreateTime(new Date().getTime());
-            textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+//            // 回复文本消息
+//            TextMessage textMessage = new TextMessage();
+//            textMessage.setToUserName(fromUserName);
+//            textMessage.setFromUserName(toUserName);
+//            textMessage.setCreateTime(new Date().getTime());
+//            textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 
             // 文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
@@ -94,8 +98,7 @@ public class CoreService {
                     // TODO 处理菜单点击事件
                 }
             }
-            // 设置文本消息的内容
-            textMessage.setContent(respContent);
+            TextMessage textMessage = MessageUtil.getTextMessage(fromUserName,toUserName,respContent);
             // 将文本消息对象转换成xml
             respXml = MessageUtil.messageToXml(textMessage);
         } catch (Exception e) {

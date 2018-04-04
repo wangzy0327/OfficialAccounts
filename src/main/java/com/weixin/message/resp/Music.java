@@ -18,6 +18,18 @@ public class Music {
     // 缩略图的媒体id，通过上传多媒体文件得到的id
     private String ThumbMediaId;
 
+    public Music(String title, String description, String musicUrl, String HQMusicUrl, String thumbMediaId) {
+        Title = title;
+        Description = description;
+        MusicUrl = musicUrl;
+        this.HQMusicUrl = HQMusicUrl;
+        ThumbMediaId = thumbMediaId;
+    }
+
+    public Music(String thumbMediaId) {
+        ThumbMediaId = thumbMediaId;
+    }
+
     public String getTitle() {
         return Title;
     }
