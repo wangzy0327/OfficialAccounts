@@ -37,15 +37,15 @@ $(function () {
         // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
         wx.onMenuShareTimeline({
             title: '大辣椒', // 分享标题
-            link: "http://wangzy.tunnel.qydev.com/neUzquH.html",
-            imgUrl: "http://wangzy.tunnel.qydev.com/img/neUzquH.jpg" // 分享图标
+            link: "http://wangzy.tunnel.qydev.com/OfficialAccounts/neUzquH.html",
+            imgUrl: "http://wangzy.tunnel.qydev.com/OfficialAccounts/img/neUzquH.jpg" // 分享图标
         });
         // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
         wx.onMenuShareAppMessage({
             title: '大辣椒', // 分享标题
             desc: "大辣椒--加一元再来一桶", // 分享描述
-            link: "http://wangzy.tunnel.qydev.com/neUzquH.html",
-            imgUrl: "http://wangzy.tunnel.qydev.com/img/neUzquH.jpg", // 分享图标
+            link: "http://wangzy.tunnel.qydev.com/OfficialAccounts/neUzquH.html",
+            imgUrl: "http://wangzy.tunnel.qydev.com/OfficialAccounts/img/neUzquH.jpg", // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
         });
 
@@ -67,8 +67,8 @@ $(function () {
         wx.onMenuShareWeibo({
             title: '大辣椒', // 分享标题
             desc: '大辣椒--加一元再来一桶', // 分享描述
-            link: 'http://wangzy.tunnel.qydev.com/neUzquH.html', // 分享链接
-            imgUrl: 'http://wangzy.tunnel.qydev.com/img/neUzquH.jpg', // 分享图标
+            link: 'http://wangzy.tunnel.qydev.com/OfficialAccounts/neUzquH.html', // 分享链接
+            imgUrl: 'http://wangzy.tunnel.qydev.com/OfficialAccounts/img/neUzquH.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
             },

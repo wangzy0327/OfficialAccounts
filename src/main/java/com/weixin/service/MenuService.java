@@ -37,8 +37,8 @@ public class MenuService {
         if(eventKey.equals(MenuUtil.KEY_TEXT_RECOMMEND)){
             String title = "大辣娇--加1元再来1桶";
             String description = "我的青春\t我来定义\n";
-            String picUrl = "http://wangzy.tunnel.qydev.com/img/neUzquH.jpg";
-            String url = "http://wangzy.tunnel.qydev.com/neUzquH.html";
+            String picUrl = "http://wangzy.tunnel.qydev.com/OfficialAccounts/img/neUzquH.jpg";
+            String url = "http://wangzy.tunnel.qydev.com/OfficialAccounts/neUzquH.html";
             Article article = MessageUtil.getArticle(title,description,picUrl,url);
             List<Article> list = new ArrayList<Article>();
             list.add(article);
@@ -47,7 +47,7 @@ public class MenuService {
             return respXml;
         }else if(eventKey.equals(MenuUtil.KEY_MUSIC_RECOMMEND)){
 //            Music music1 = new Music("See You Again","电影《速度与激情7》原声专辑","http://wangzy.tunnel.qydev.com/audio/See_You_Again.mp3","http://wangzy.tunnel.qydev.com/audio/See_You_Again.mp3","UkiEqDoyNZucWQq2NUajSBbDfhS-zMLFLSovXh34lLzO701gKrXYTUMEg1mW7aKA");
-            Music music2 = new Music("铁血丹心","射雕英雄传主题曲","http://wangzy.tunnel.qydev.com/audio/罗文,甄妮 - 世间始终你好.mp3","http://wangzy.tunnel.qydev.com/audio/罗文,甄妮 - 世间始终你好.mp3","UkiEqDoyNZucWQq2NUajSBbDfhS-zMLFLSovXh34lLzO701gKrXYTUMEg1mW7aKA");
+            Music music2 = new Music("铁血丹心","射雕英雄传主题曲","http://wangzy.tunnel.qydev.com/OfficialAccounts/audio/罗文,甄妮 - 世间始终你好.mp3","http://wangzy.tunnel.qydev.com/OfficialAccounts/audio/罗文,甄妮 - 世间始终你好.mp3","UkiEqDoyNZucWQq2NUajSBbDfhS-zMLFLSovXh34lLzO701gKrXYTUMEg1mW7aKA");
             MusicMessage musicMessage = MessageUtil.getMusicMessage(fromUserName,toUserName,music2);
             respXml = MessageUtil.messageToXml(musicMessage);
             System.out.println(respXml);
